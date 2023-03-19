@@ -1,0 +1,302 @@
+@import "reset.css";
+
+body{
+    font-family: 'Noto Serif KR', serif;
+}
+
+
+.blink {
+    animation: blink 2s linear infinite;
+}
+
+
+
+
+
+@keyframes blink {
+    0% {opacity: 0;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.introTitle{
+    font-weight: 900;
+    position: fixed;
+    top:50%;
+    left:10%;
+    width: 80%;
+    font-size: 16px;
+    text-align: left;
+    color:bisque; 
+    line-height: 1.4;
+}
+.skipButton{
+    position: fixed;
+    width: 100%;
+    top:80%;
+    text-align: center;
+    font-size: 18px;
+    color: aliceblue;
+}
+
+.skipButton:hover{
+    filter: invert(0.5);
+/*    color: red;*/
+    opacity: 1;
+}
+/*페이드인 페이드아웃 */
+
+.fadeIn{
+    animation: fadeIn 2s;
+    animation-fill-mode: forwards;
+}
+
+.fadeOut{
+    animation: fadeOut 1s linear;
+    animation-fill-mode:forwards;
+}
+
+@keyframes fadeIn{
+    0% {opacity: 0;}
+    100% {opacity: 1;}   
+}
+@keyframes fadeOut{
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+/*리스트- 걷다/보다/만나다 */
+
+.list_intro{
+    opacity: 0;
+    position: fixed;
+    top: 60%;
+    width: 100%;
+    margin: 0 auto;
+    font-weight: 100;
+    height: 100px;
+    list-style: none;
+    font-size: 18px;
+    color: #ddeeee;
+    
+/*    animation-delay: 2s;*/
+}
+.walk{
+    text-align: center;
+    margin-top: 11%;
+}
+.walk > a:hover{
+    cursor:default;
+}
+
+.see{
+    text-align: center;
+    margin-top: 11%;
+}
+.meet{
+    text-align: center;
+    margin-top: 11%;
+}
+
+
+
+.list_intro > li:hover{
+    opacity: 0.5;
+}
+.list_intro > li > a {
+    text-decoration: none;
+    color: #ddeeee;
+}
+
+/*만나다 */
+.profile{
+    
+    opacity: 0;
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    overflow: scroll;
+    
+}
+.none{
+    display: none;
+}
+.profile_img{
+    display: block;
+    
+    margin-top:13%;
+    background-image: url(./img/profileImg.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width:80%;
+    height: 275px;
+    margin-left:10%;
+}
+.profile_txt{
+    font-size: 17px;
+
+    display: block;
+    top: 306px;
+    color: #ddee;
+    width : 86%;
+    margin-top:40px;
+    margin-left:7%;
+    line-height: 1.4;
+    text-indent: 15px;
+/*    letter-spacing: 0.1px;*/
+}
+.profile_email{
+    display: block;
+    margin:0 auto;
+
+    color: #ddee;
+    font-size: 16px;
+    margin-top:25px;
+    margin-left: 7%;
+    padding-bottom: 50px;
+}
+
+/*이스케이프*/
+
+.escapeButton {
+    
+    opacity: 0;
+    background-image: url(img/exit.png);
+    background-size: contain;
+    width: 26px;
+    height: 26px;
+    position: fixed;
+    top : 47px;
+    right: 31px;
+    z-index: 100;
+    
+}
+.escapeButton:hover {
+    filter: opacity(0.5);
+}
+
+
+@media only screen and (max-width : 420px) {
+
+    body{
+/*        background-color: red;*/
+    
+    }
+    .introTitle{
+        font-size: 14px;
+        top:40%;
+    }
+    .skipButton{
+        font-size: 15px;
+    }
+    .list_intro{
+        font-size: 16px;
+    }
+    
+    .profile_img{
+        width: 86%;
+        margin-left:7%;
+        background-position: center;
+    }
+    .profile_txt{
+        font-size:15px;
+        line-height: 1.45;
+    }
+
+    
+}
+@media only screen and (min-width : 421px) and (max-width : 800px) {
+    body{
+/*        background-color: green;*/
+    }
+    .introTitle{
+        font-size: 19px;
+        top:46%;
+    }
+    .profile_txt{
+        line-height: 1.45;
+    }
+
+}
+
+@media only screen and (min-width : 801px) and (max-width : 1220px) {
+    .introTitle{
+        font-size: 18px;
+        top:40%;
+    }
+        .list_intro{
+        top:60.7%;
+        width: 100%;
+        height: 20%;
+        margin-top: 60px;
+        text-align: center;
+        
+    }
+    .walk{
+        display: inline-block;
+    }
+    .see{
+        display: inline-block;
+        margin-left: 10%;
+    }
+    .meet{
+        display: inline-block;
+        margin-left: 10%;
+    }
+}
+
+@media only screen and (min-width : 1221px) {
+    body{
+/*        background-color: gray;*/
+    }
+    .list_intro{
+        top: 55.3%;
+        width: 100%;
+        height: 10%;
+        margin-top: 0px;
+        text-align: center;
+    }
+    .walk{
+        display: inline-block;
+    }
+    .see{
+        display: inline-block;
+        margin-left: 10%;
+    }
+    .meet{
+        display: inline-block;
+        margin-left: 10%;
+    }
+    .profile_img{
+        position: fixed;
+
+        top:0;
+        left:10%;
+
+        background-image: url(./img/profileImg.jpg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width:400px;
+        height: 400px;
+    }
+    .profile_txt{
+        margin-top: 16%;
+        position: fixed;
+        top:0;
+        width:50%;
+        left: 490px;
+        font-size: 17px;
+
+    }
+    .profile_email{
+        position: fixed;
+        top: 60%;
+        left: 490px;
+        font-size: 16px;
+
+
+    }
+    
+    
+}

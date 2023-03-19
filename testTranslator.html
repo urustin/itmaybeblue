@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <textarea rows="3" class="inputBox"></textarea>
+    <button type="submit" class="shoot">aaa</button>
+    <div class="outputBox"></div>
+    
+    <script>
+        const inputBox = document.querySelector(".inputBox");
+        const shoot = document.querySelector(".shoot");
+        const outputBox = document.querySelector(".outputBox");
+        
+        function translate(){
+            var AA =inputBox.value;
+
+            function replaceAll(str, searchStr, replaceStr) {
+                      return str.split(searchStr).join(replaceStr);
+                    }
+            var BB =replaceAll(AA,/(?:\r\n|\r|\n)/g, '<br>');
+            
+            var CC =BB.replace(/"/g, '\\"');
+//            AA.replace("\n","<br>");
+
+            
+            outputBox.append(CC);
+        }
+        shoot.addEventListener("click",translate);
+    </script>
+</body>
+</html>

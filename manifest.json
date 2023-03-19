@@ -1,0 +1,9 @@
+{
+  "short_name": "itmaybe.blue",
+  "name": "itmaybe.blue",
+
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait"
+    
+}
