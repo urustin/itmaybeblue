@@ -10,7 +10,7 @@
 $(document).ready(function(){
 setTimeout(function(){
 //  제이슨로드
-    $.getJSON("./text/postData.json",function(data){
+    $.getJSON("./text/postData_eng.json",function(data){
 //        console.log(data["song"]);
         var post = data["post"];
 //        console.log(post[0]);
@@ -51,7 +51,11 @@ setTimeout(function(){
                     }
                     i=i+1;
         })
-    
+
+        //post 맨위에거 깜빡이게하기
+
+        const topPost = document.querySelectorAll(".option");
+        topPost[0].classList.add("opacityAnimation");
         
             //postOpen
         
@@ -60,7 +64,7 @@ setTimeout(function(){
 //            console.log(k);
         var postNumber = "post".concat(k);
         var postObject = post[k][postNumber];
-
+        
         $(".postOpen > ul").append("<li></li>");
            
 //            $(".postList > ul").append(postObject.title);

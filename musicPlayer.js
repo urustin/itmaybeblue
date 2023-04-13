@@ -3,7 +3,7 @@
 var playlist = [];
 
 
-$.getJSON("./text/postData.json",function(data){
+$.getJSON("./text/postData_eng.json",function(data){
 //    console.log(data["song"][song0]);
 
     var song = data["song"];
@@ -46,7 +46,7 @@ const musicPlayer = document.querySelector('.musicPlayer');
 const btn_list = document.querySelector('.btn_list');
 const songList = document.querySelector('.songList');
 const btn_exit_song = document.querySelector('.btn_exit_song');
-    
+let isFirst = true;
 //비디오플레이때문에 전역객체에 선언
 window.btn_play = document.querySelector('.btn_play');
 
@@ -72,13 +72,13 @@ const btn_rewind = document.querySelector(".btn_rewind");
 
 var currentSong = Math.floor(Math.random() * (playlist.length));
 
-console.log(currentSong);
-console.log(playlist.length);
+// console.log(currentSong);
+// console.log(playlist.length);
     
 function checkNumber() {
    if(currentSong > playlist.length-1){
     currentSong = 0;
-    console.log("changeNumber");
+    // console.log("changeNumber");
     }
     if(currentSong<0){
         currentSong = playlist.length-1;
@@ -102,11 +102,15 @@ window.aud = new Audio(playlist[currentSong]);
 //document.onload = loadPlay;
 
     
-    
+
+
+
+
     
 //코멘트추가
 //타이틀로변경
-$.getJSON("./text/postData.json",function(data){
+
+$.getJSON("./text/postData_eng.json",function(data){
     var song = data["song"];
     var songNumber = "song".concat(currentSong);
     var songObject = song[currentSong][songNumber];
@@ -128,11 +132,11 @@ function nextSong(){
     playState = true;
     changeButton();
     //코멘트추가
-    $.getJSON("./text/postData.json",function(data){
+    $.getJSON("./text/postData_eng.json",function(data){
         var song = data["song"];
         var songNumber = "song".concat(currentSong);
         var songObject = song[currentSong][songNumber];
-        console.log(songObject.comment);
+        // console.log(songObject.comment);
         $(".nowPlaying").html(songObject.title);
     });
 }
@@ -148,11 +152,11 @@ function rewindSong(){
     playState = true;
     changeButton();
     //코멘트추가
-    $.getJSON("./text/postData.json",function(data){
+    $.getJSON("./text/postData_eng.json",function(data){
         var song = data["song"];
         var songNumber = "song".concat(currentSong);
         var songObject = song[currentSong][songNumber];
-        console.log(songObject.comment);
+        // console.log(songObject.comment);
         $(".nowPlaying").html(songObject.title);
     });
 }
@@ -178,6 +182,10 @@ function changeButton(){
 
 
 function playMusic(){
+    if(isFirst){
+        btn_play.classList.remove("opacityAnimation");
+        isFirst = false;
+    }
     if(playState===true){
         
         aud.pause();
@@ -223,7 +231,7 @@ function listIn(){
             songList.classList.add('fadeUp');
             },10);
             
-            console.log("aaa");
+            // console.log("aaa");
     }
 }
 function listOut(){
@@ -236,8 +244,19 @@ function listOut(){
 }
 
 
+//////리스트 이외부분 클릭시 리스트 닫기
+const bodybody = document.querySelector("body");
+
+function isList(e){
+    console.log(e.target.className);
+    if(listVisible && !e.target.className.includes("btn_list")){
+        listOut();
+    }
+}
+
 btn_list.addEventListener('click',listIn);
-btn_exit_song.addEventListener('click',listOut);
+// btn_exit_song.addEventListener('click',listOut);
+bodybody.addEventListener("click",isList);
 
 
 
@@ -279,12 +298,12 @@ function checkSong(e){
     playState=true;
     changeButton();
     //코멘트추가
-    $.getJSON("./text/postData.json",function(data){
+    $.getJSON("./text/postData_eng.json",function(data){
         var song = data["song"];
         var songNumber = "song".concat(trans);
         var songObject = song[trans][songNumber];
-        console.log(songObject.comment);
-        console.log(currentSong);
+        // console.log(songObject.comment);
+        // console.log(currentSong);
         $(".nowPlaying").html(songObject.title);
     });
     

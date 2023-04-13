@@ -1,6 +1,6 @@
 setTimeout(function(){
   
-console.log("postView");    
+// console.log("postView");    
 ////////////////포스트 등장/목록 되돌아가기///////////
 
 const postList = document.querySelector(".postList");
@@ -10,13 +10,14 @@ const btn_exit_post = document.querySelectorAll(".btn_exit_post");
 const btn_exit_main = document.querySelector(".btn_exit_main");
 window.postVideo = document.querySelectorAll(".postVideo");
 const body = document.querySelector("body");
- 
+let firstClick = true;
     
     
 var clickLocation;
 
 
 function checkPost(e){
+    //깜빡임 멈추기
     
     //다른게시글 눌러도 다 초기화
     for(var i=0;i<post.length;i++){
@@ -37,6 +38,18 @@ function checkPost(e){
 //    console.log(post[post.length-trans]);
     var trans2 = post.length-trans;
 //    console.log(trans2);
+
+    //클릭시 깜빡임 멈추기 
+    if(firstClick){
+        const topPost = document.querySelectorAll(".option");
+        topPost[0].classList.remove("opacityAnimation");
+        firstClick = false;
+        const btn_play = document.querySelector(".btn_play");
+        btn_play.classList.add("opacityAnimation");
+        
+    }
+    
+
 
     if(e.target.classList[2]==="video"){
         console.log("it'svideo"); 
