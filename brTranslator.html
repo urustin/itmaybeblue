@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <textarea style="width: 400px; height: 400px;" rows="3" class="inputBox"></textarea>
+    <button type="submit" class="shoot">aaa</button>
+    <div class="outputBox"></div>
+    
+    <script>
+        const inputBox = document.querySelector(".inputBox");
+        const shoot = document.querySelector(".shoot");
+        const outputBox = document.querySelector(".outputBox");
+        
+        function translate(){
+            var AA =inputBox.value;
+
+            function replaceAll(str, searchStr, replaceStr) {
+                      return str.split(searchStr).join(replaceStr);
+                    }
+            var BB =replaceAll(AA,/(?:\r\n|\r|\n)/g, '\\n');
+            
+            var CC =BB.replace(/"/g, '\\"');
+//            AA.replace("\n","<br>");
+
+            
+            outputBox.append(CC);
+            copyToClipboard(CC); // 새로운 함수 호출
+        }
+        // 새로운 함수 정의
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert("copy!")
+        }
+        shoot.addEventListener("click",translate);
+    </script>
+</body>
+</html>
